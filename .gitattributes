@@ -1,0 +1,11 @@
+# Forçar PHP
+*.php linguist-language=PHP
+
+# Forçar HTML e CSS embutidos dentro de PHP
+*.php linguist-detectable=true
+
+# Se houver arquivos CSS externos
+*.css linguist-language=CSS
+
+# Se houver arquivos HTML externos
+*.html linguist-language=HTML
