@@ -1,0 +1,116 @@
+
+
+
+body {
+     font-family: "Inter", sans-serif I !important;
+     color: #017CBC !important;
+     background: #0D47A1 !important;
+
+}
+
+
+.left_col {
+    background: #0D47A1 !important;
+}
+
+.nav-sm .container.body .col-md-3 .left_col {
+    min-height: 100%;
+    width: 90px;
+    padding: 0;
+    z-index: 9999;
+    position: absolute;
+}
+
+
+.nav.side-menu>li.active>a {
+    text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+    background: linear-gradient(#0D47A1, #FFCC29), #0D47A1;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset #0D47A1 0 1px 0
+}
+
+
+
+.nav.side-menu li.active, .nav.side-menu li.current-page {
+    border-right: 5px solid #0D47A1 !important;
+}
+
+
+.nav-md ul.nav.child_menu li:before {
+    background: #FFCC29 !important;
+}
+
+.nav_title {
+    width: 230px;
+    float: left;
+    background: #36f70b;
+    border-radius: 0;
+    height: 57px
+}
+
+.toggle {
+    float: left;
+    margin: 0;
+    padding: 16px 20px;
+    width: 70px
+   
+}
+
+.nav-sm ul.nav.child_menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    width: 210px;
+    z-index: 4000;
+    background: #0D47A1;
+    display: none
+
+}
+
+.nav-sm ul.nav.child_menu li a {
+    text-align: left !important;
+    font-size: 15px;
+}
+
+
+.page-title .title_left {
+    width: 45%;
+    float: left;
+    display: block
+}
+.page-title .title_left h3 {
+    margin: 9px 0
+}
+.page-title .title_right {
+    width: 50%;
+    float: left;
+    display: absolut;
+}
+
+/*centralizando tela de login*/
+.login {
+    background: #0D47A1;
+}
+.login h1 {
+    font-family: 'Montserrat' sans-serif;
+    color: #017CBC;
+    font-size: 50px
+}
+.login h3 {
+    font-family: 'Montserrat' sans-serif;
+    position: relative;
+    top: -7px;
+    color: #017CBC;
+    
+}
+a.hiddenanchor {
+    display: none
+}
+.login_wrapper {
+    
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
+}
