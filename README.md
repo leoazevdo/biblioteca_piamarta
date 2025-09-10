@@ -12,7 +12,8 @@ Este fork foi modificado para:
 
 - 🎨 Adequação da **identidade visual** ao colégio.  
 - ⚙️ Melhorias no **front-end** e **back-end**.  
-- 🆕 Adição de novas funcionalidades (em andamento).  
+- 🆕 Adição de novas funcionalidades (em andamento).
+- 🔄 Ultima atualização: Adição do da função e do relatório de leitores do mês.
 
 Projeto original: [Online Escola](https://www.onlineescola.com.br/).
 
