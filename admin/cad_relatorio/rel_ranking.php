@@ -110,6 +110,6 @@ $result = $stmt->execute();
 <script>
 function exportarExcel() {
     // Implementar exportação para Excel se necessário
-    alert('Funcionalidade de exportação em desenvolvimento');
+    alert('Funcionalidade de exportação ainda em desenvolvimento');
 }
 </script>
