@@ -6,18 +6,25 @@ Foram realizadas edições no **front-end e back-end**, adequando o sistema à i
 
 ---
 
+## 🖼️ Screenshots
+
+![Tela de Login](./screenshots/login.png)
+![Painel Principal](./screenshots/dashboard.png)
+![Relatórios](./screenshots/relatorios.png)
+
+---
+
 ## 🚀 Sobre o Projeto
 O **Bibliotecário V3** é um sistema gratuito para administração de bibliotecas, desenvolvido em **PHP** e **SQLite3**.  
 Este fork foi modificado para:
 
-- 🎨 Adequação da **identidade visual** ao colégio.  
-- ⚙️ Melhorias no **front-end** e **back-end**.  
-- 🆕 Adição de novas funcionalidades (em andamento).
-- 🔄 Ultima atualização: Adição do da função e do relatório de leitores do mês.
-
-Projeto original: [Online Escola](https://www.onlineescola.com.br/).
+- 🎨 Adequação da **identidade visual** ao Colégio Piamarta Montese.  
+- ⚙️ Melhorias no **front-end** (layout, resposividade
+- ⚙️ Melhorias no  **back-end**.  (Criação de relatórios personalizados)
+- 🆕 Funcionalidades em desenvolvimento ( Relatório de leitores do mês/ano).
 
 ---
+
 
 ## 🛠️ Tecnologias Utilizadas
 - PHP 7+  
