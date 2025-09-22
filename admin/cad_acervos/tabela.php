@@ -59,7 +59,9 @@ $colunas_selecionadas = explode(',', $resultPreferencias['preferencias']);
     <thead>
         <tr>
             <th>#</th>
-            <th></th>
+            <th>
+            <input type="checkbox" id="selectAll">
+            </th>
             <th>Capa</th>
             <th>Título</th>
             <th>Categoria</th>
@@ -112,7 +114,7 @@ $colunas_selecionadas = explode(',', $resultPreferencias['preferencias']);
 
             echo "<tr>";
             echo "<td>$id</td>";
-            echo "<td style='color:black'><input type='checkbox'></td>";
+           echo "<td style='color:black'><input type='checkbox' class='row-select' data-id='$id'></td>";
             echo "<td><img src='$caminhoFinal' width='50' ></td>";
             echo "<td>$titulo</td>";
             echo "<td data-categoria-id='$categoria_id'>$categoria</td>";
@@ -201,13 +203,14 @@ $colunas_selecionadas = explode(',', $resultPreferencias['preferencias']);
 
 <script>
      $(document).ready(function() {
-        $('#acervosTable').DataTable({
-            language: {
-                url: "../arquivos/vendors/datatables-pt-BR/pt-BR.json"
-            },
-            pageLength: 50, // Define o número de registros exibidos na primeira página
-            dom: '<"dt-buttons-container"B>lfrtip', // Ativa o uso dos botões
-            buttons: [
+  const table = $('#acervosTable').DataTable({
+    language: {
+      url: "../arquivos/vendors/datatables-pt-BR/pt-BR.json"
+    },
+    pageLength: 50, // valor inicial ao carregar
+    lengthMenu: [[50, 100, 1000, 2000, -1], [50, 100, 1000, 2000, "Todos"]], // adiciona 1000, 2000 e "Todos"
+    dom: '<"dt-buttons-container"B>lfrtip', // mantém seus botões
+    buttons: [
                 {
                     extend: "print",
                     text: "Imprimir",
@@ -228,6 +231,84 @@ $colunas_selecionadas = explode(',', $resultPreferencias['preferencias']);
             ],
             order: [[3, 'asc']] // Define a terceira coluna como padrão para ordenação
         });
+
+
+//Função de selecionar Todos 
+// Mapa para armazenar seleções
+let selectedRowsMap = {};
+
+// Clique no "Selecionar Todos"
+$('#selectAll').on('change', function () {
+  const checked = this.checked;
+
+  // Marca todos na página atual
+  $('#acervosTable tbody input.row-select').prop('checked', checked);
+
+  // Marca/desmarca todas as linhas (todas as páginas)
+  table.rows().every(function () {
+    const data = this.data();
+    const id = $(data[0]).text() || $(this.node()).find('td:first').text().trim();
+    selectedRowsMap[id] = checked;
+  });
+});
+
+// Quando o usuário marca/desmarca individualmente
+$('#acervosTable tbody').on('change', 'input.row-select', function () {
+  const row = $(this).closest('tr');
+  const id = row.find('td').eq(0).text().trim();
+  selectedRowsMap[id] = this.checked;
+});
+
+// Ao mudar de página, mantém o estado
+table.on('draw', function () {
+  table.rows().every(function () {
+    const row = $(this.node());
+    const id = row.find('td').eq(0).text().trim();
+    row.find('input.row-select').prop('checked', !!selectedRowsMap[id]);
+  });
+});
+
+// Botão para gerar etiquetas
+$('.gerar_etiquetas').on('click', function () {
+  // Coleta IDs selecionados
+  const selectedIds = Object.keys(selectedRowsMap).filter(id => selectedRowsMap[id]);
+
+  if (selectedIds.length === 0) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Nenhuma seleção',
+      text: 'Por favor, selecione pelo menos um item para gerar as etiquetas.',
+    });
+    return;
+  }
+
+  const etiquetasContainer = $('.etiquetas-container').empty();
+
+  selectedIds.forEach(id => {
+    const rowNode = table.rows().nodes().to$().filter(function () {
+      return $(this).find('td').eq(0).text().trim() === id;
+    });
+    const titulo = rowNode.find('td').eq(3).text().trim();
+    const categoria = rowNode.find('td').eq(4).text().trim();
+    const setor = rowNode.find('td').eq(5).text().trim();
+    const estante = rowNode.find('td').eq(6).text().trim();
+    const prateleira = rowNode.find('td').eq(7).text().trim();
+
+    let local = [setor, estante, prateleira].filter(Boolean).join(' - ');
+
+    etiquetasContainer.append(`
+      <div style="width:30%;padding:5px;float:left;margin-left:10px;">
+        <div class="etiqueta" style="border:1px solid #000;padding:10px;">
+          <h3>ID: ${id}</h3>
+          <p><strong>Título:</strong> ${titulo}<br>
+          <strong>Categoria:</strong> ${categoria}<br>
+          <strong>Local:</strong> ${local || 'Não informado'}</p>
+        </div>
+      </div>
+    `);
+  });
+});
+
 
 
     // Função para editar um registro
@@ -354,6 +435,9 @@ $colunas_selecionadas = explode(',', $resultPreferencias['preferencias']);
         });
     });
 
+
+
+    
      // Evento para gerar etiquetas
      $('.gerar_etiquetas').on('click', function () {
         const selectedRows = $('#acervosTable tbody input[type="checkbox"]:checked').closest('tr');
