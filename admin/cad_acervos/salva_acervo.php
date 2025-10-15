@@ -10,6 +10,9 @@ if (!isset($_SESSION['user_id'])) {
 try {
     // Conexão com o banco de dados
     $db = new SQLite3('../../data/bibliotecario.db');
+    $db->exec("PRAGMA journal_mode = WAL;");
+    $db->exec("PRAGMA synchronous = NORMAL;");
+    $db->exec("PRAGMA temp_store = MEMORY;");
 
     // Dados do formulário
     $titulo = $_POST['titulo'] ?? '';
@@ -78,9 +81,14 @@ try {
     $stmt->bindValue(':capa', $caminhoCapa, SQLITE3_TEXT);
     $stmt->bindValue(':codigo', $titulo, SQLITE3_TEXT);
 
-    for ($i = 0; $i < $quantidade; $i++) {
-        $stmt->execute();
+    $db->exec("BEGIN TRANSACTION");
+    for ($i = 0; $i < $quantidade; $i++) { 
+    $stmt->execute();
     }
+    $db->exec("COMMIT");
+
+    $stmt->close();
+    $db->close();
 
     echo json_encode(["status" => "success", "message" => "Acervo cadastrado com sucesso!"]);
 

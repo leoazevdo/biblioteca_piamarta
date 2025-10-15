@@ -207,7 +207,7 @@ $colunas_selecionadas = explode(',', $resultPreferencias['preferencias']);
     language: {
       url: "../arquivos/vendors/datatables-pt-BR/pt-BR.json"
     },
-    pageLength: 50, // valor inicial ao carregar
+    pageLength: 10, // valor inicial ao carregar
     lengthMenu: [[50, 100, 1000, 2000, -1], [50, 100, 1000, 2000, "Todos"]], // adiciona 1000, 2000 e "Todos"
     dom: '<"dt-buttons-container"B>lfrtip', // mantém seus botões
     buttons: [
