@@ -101,10 +101,10 @@ http://localhost/
 ---
 
 ## 👨‍💻 Autor
-- Projeto original: [Online Escola](https://www.onlineescola.com.br/)  
+- Projeto original: [Online Escola](https://www.onlineescola.com.br/)
+- Projeto original: **WADSON BENFICA**
 - Customizações: **LEONARDO AZEVEDO**
 
 ---
 
 📌 Este repositório serve como documentação e versionamento das melhorias aplicadas no sistema para o uso interno do colégio.
-
