@@ -92,10 +92,19 @@
           </form>
         </div>
       </div>
-
+<div class="row justify-content-center">
+        
+        <div class="col-sm-6 col-md-4 text-center mx-auto" style="max-width: 300px;">
+    <hr>
+    <h1 class="fs-5"><small><i class="fa fa-graduation-cap"></i> PLATAFORMAS TECH!</small></h1>
+    <p class="fs-6">
+        <small>&copy; 2025 Todos os direitos reservados. <br>
+        SISTEMA BIBLIOTECÁRIO é um SOFTWARE para organização de acervos bibliográficos de pequenas ou médias bibliotecas.</small>
+    </p>
+</div>
     </div>
   </div>
-
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
    

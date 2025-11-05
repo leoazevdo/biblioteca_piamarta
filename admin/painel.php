@@ -328,7 +328,7 @@ if (!isset($_SESSION['user_id'])) {
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-           Directed by Departamento de TI - Colégio Piamarta Montese
+           PLATAFORMAS TECH! - &copy; 2025 Todos os direitos reservados.
           </div>
           <div class="clearfix"></div>
         </footer>
